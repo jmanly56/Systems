@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 IF (WIN32)
-
+add_executable(Systems WIN32 main.cpp)
 
 target_include_directories(Systems PRIVATE "C:/sdl/include")
 
@@ -19,7 +19,8 @@ target_link_directories(Systems PRIVATE "C:/sdl")
 ELSE()
 
 find_package(SDL2)
+add_executable(Systems main.cpp)
 
 ENDIF()
-add_executable(Systems WIN32 main.cpp)
+
 target_link_libraries(Systems PRIVATE SDL2 SDL2main)
