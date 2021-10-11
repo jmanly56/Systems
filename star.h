@@ -7,7 +7,7 @@ class Star
 {
 public:
     Star();
-    Star(double radious, double mass = 0, double orbitalRadius = 0);
+    Star(double radius, double mass = 0, double orbitalRadius = 0);
     double getTemperature();
     double getLuminosity();
     double getSolarRadius();
@@ -18,6 +18,8 @@ public:
     double getSnowLineAU();
 
 protected:
+    double radius;
+    double mass;
     double luminosity; //Solar units
     double temperature; //Kelvin
     double innerLimit; //KM
@@ -34,3 +36,15 @@ private:
 };
 
 #endif // STAR_H
+#ifndef solarRadiusInKM
+#define solarRadiusInKM 695700
+#endif
+#ifndef solarMassInKG
+#define solarMassInKG 1988470000000000000000000000000.0
+#endif
+#ifndef AUinKM
+#define AUinKM 149598000.0
+#endif
+#ifndef earthMassInKG
+#define earthMassInKG 5972000000000000000000000.0
+#endif
