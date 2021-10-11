@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 IF (WIN32)
-add_executable(Systems WIN32 main.cpp)
+add_executable(Systems WIN32 main.cpp starsystem.h starsystem.cpp star.h star.cpp)
 
 target_include_directories(Systems PRIVATE "C:/sdl/include")
 
@@ -19,7 +19,7 @@ target_link_directories(Systems PRIVATE "C:/sdl")
 ELSE()
 
 find_package(SDL2)
-add_executable(Systems main.cpp)
+add_executable(Systems main.cpp starsystem.h starsystem.cpp star.h star.cpp)
 
 ENDIF()
 
