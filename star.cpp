@@ -22,6 +22,8 @@ Star::Star(double radius, double mass, double orbitalRadius)
     temperature = pow((luminosity / pow((radius / solarRadiusInKM), 2.0)), 0.25) * 5777;
     outerLimit = 40 * getSolarMass() * AUinKM;
     innerLimit = 0.1 * getSolarMass() * AUinKM;
+    stellarAge = std::fmod(rand(), (10000000000 * pow((getSolarMass()/1),(-2.5))));
+    snowLine = 2.7 * pow(luminosity,0.5);
 }
 
 double Star::getSolarMass()
