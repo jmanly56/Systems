@@ -143,6 +143,11 @@ std::string Star::toString()
     tempString += "Mass: " + std::to_string(mass) + "\n";
     tempString += "Temperature: " + std::to_string(temperature) + "\n";
     tempString += "Radius: " + std::to_string(radius) + "\n";
+    tempString += "Luminosity: " + std::to_string(luminosity) + "\n";
+    tempString += "InnerLimit: " + std::to_string(innerLimit) + "\n";
+    tempString += "OuterLimit: " + std::to_string(outerLimit) + "\n";
+    tempString += "Snow Line: " + std::to_string(snowLine) + "\n";
+    tempString += "Age: " + std::to_string(stellarAge) + "\n";
     return tempString;
 }
 
