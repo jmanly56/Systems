@@ -8,6 +8,7 @@ class StarSystem
 public:
     StarSystem();
     void generateStars();
+    std::string toString();
 
     //Debug functions. Do not use for another purpose.
     std::vector<Star> getStars();
@@ -18,6 +19,8 @@ private:
     std::exponential_distribution<double> rde;
     std::normal_distribution<double> nd;
     std::vector<Star> stars;
+    Star genCompanionStar(double solarMasses, double innerLimit);
+    double generateStarOrbitalRadius(double innerLimit);
 
 };
 

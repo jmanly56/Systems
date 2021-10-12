@@ -16,6 +16,9 @@ public:
     double getOuterLimitAU();
     double getStellarAge();
     double getSnowLineAU();
+    double getOrbitalRadiusAU();
+    void setOrbitalRadius(double radius);
+    std::string toString();
 
 protected:
     double radius;
@@ -25,6 +28,8 @@ protected:
     double innerLimit; //KM
     double outerLimit; //KM
     double snowLine; //AU
+    double orbitalRadius; //KM
+    double orbitalPeriod;
 
 private:
     SDL_Color getTemperatureColor();

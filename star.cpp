@@ -10,6 +10,8 @@ Star::Star()
     {
         this->mass = nd(generator);
     }
+    luminosity = calcLuminosity(mass);
+    radius = calcRadius(mass);
     temperature = pow((luminosity / pow((radius / solarRadiusInKM), 2.0)), 0.25) * 5777;
     mass = mass * solarMassInKG;
     Star(radius, mass, 0);
@@ -18,8 +20,7 @@ Star::Star()
 
 Star::Star(double radius, double mass, double orbitalRadius)
 {
-    luminosity = calcLuminosity(mass);
-    radius = calcRadius(mass);
+
 }
 
 double Star::getSolarMass()
@@ -117,4 +118,62 @@ double Star::calcRadius(double mass)
     {
         return (0.420598 * mass + 0.80637) * solarRadiusInKM;
     }
+}
+
+void Star::setOrbitalRadius(double radius)
+{
+    orbitalRadius = radius;
+    if (this->orbitalRadius > 0)
+    {
+        orbitalPeriod = sqrt(pow(this->getOrbitalRadiusAU(), 3))/(mass/earthMassInKG);
+    }
+}
+
+double Star::getOrbitalRadiusAU()
+{
+    return orbitalRadius / AUinKM;
+}
+
+std::string Star::toString()
+{
+    std::string tempString = "Star\n";
+    tempString += "Mass: " + std::to_string(mass) + "\n";
+    tempString += "Temperature: " + std::to_string(temperature) + "\n";
+    tempString += "Radius: " + std::to_string(radius) + "\n";
+    return tempString;
+}
+
+double Star::getTemperature()
+{
+    return temperature;
+}
+
+double Star::getLuminosity()
+{
+    return luminosity;
+}
+
+double Star::getSolarRadius()
+{
+    return radius / solarRadiusInKM;
+}
+
+double Star::getInnerLimitAU()
+{
+    return innerLimit / AUinKM;
+}
+
+double Star::getOuterLimitAU()
+{
+    return outerLimit / AUinKM;
+}
+
+double Star::getStellarAge()
+{
+    return stellarAge;
+}
+
+double Star::getSnowLineAU()
+{
+    return snowLine;
 }
