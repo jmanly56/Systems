@@ -80,3 +80,41 @@ SDL_Color Star::getTemperatureColor()
     color.a = 255;
     return color;
 }
+
+double Star::calcLuminosity(double mass)
+{
+    if (mass < 0.43)
+    {
+        return 0.23 * pow(mass, 2.3);
+    }
+    else if (0.43 <= mass && mass < 2)
+    {
+        return pow(mass, 4.0);
+    }
+    else if (2 <= mass && mass < 20)
+    {
+        return 1.5 * pow(mass, 3.5);
+    }
+    else if (20 <= mass)
+    {
+        return 3200 * mass;
+    }
+    throw "Invalid mass/luminosity!";
+}
+
+//Calculate the radius of the star, output in KM.
+double Star::calcRadius(double mass)
+{
+    if (mass < 0.5)
+    {
+        return (0.715219 * mass + 0.219777) * solarRadiusInKM;
+    }
+    else if (mass < 3)
+    {
+        return (0.672937 * mass + 0.297013) * solarRadiusInKM;
+    }
+    else if (mass >= 3)
+    {
+        return (0.420598 * mass + 0.80637) * solarRadiusInKM;
+    }
+}
