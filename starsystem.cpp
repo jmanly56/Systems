@@ -103,3 +103,8 @@ double StarSystem::generateStarOrbitalRadius(double innerLimit)
     }
     return radius * AUinKM;
 }
+
+std::vector<Star> StarSystem::getStars()
+{
+    return stars;
+}
