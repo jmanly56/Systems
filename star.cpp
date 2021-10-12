@@ -20,6 +20,8 @@ Star::Star(double radius, double mass, double orbitalRadius)
 {
     luminosity = calcLuminosity(mass);
     temperature = pow((luminosity / pow((radius / solarRadiusInKM), 2.0)), 0.25) * 5777;
+    outerLimit = 40 * getSolarMass() * AUinKM;
+    innerLimit = 0.1 * getSolarMass() * AUinKM;
 }
 
 double Star::getSolarMass()
