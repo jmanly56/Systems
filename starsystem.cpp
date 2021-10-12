@@ -20,6 +20,21 @@ std::string StarSystem::toString()
     return tempString;
 }
 
+double StarSystem::getSystemOuterLimitAU()
+{
+    double sol = 0;
+    double limit = 0;
+    for (auto &star : stars)
+    {
+        limit = star.getOrbitalRadiusAU() + star.getOuterLimitAU();
+        if (sol < limit)
+        {
+            sol = limit;
+        }
+    }
+    return sol;
+}
+
 void StarSystem::generateStars()
 {
     stars.clear();

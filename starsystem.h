@@ -9,6 +9,7 @@ public:
     StarSystem();
     void generateStars();
     std::string toString();
+    double getSystemOuterLimitAU();
 
     //Debug functions. Do not use for another purpose.
     std::vector<Star> getStars();

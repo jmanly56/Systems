@@ -10,9 +10,7 @@ Star::Star()
     {
         this->mass = nd(generator);
     }
-    luminosity = calcLuminosity(mass);
     radius = calcRadius(mass);
-    temperature = pow((luminosity / pow((radius / solarRadiusInKM), 2.0)), 0.25) * 5777;
     mass = mass * solarMassInKG;
     Star(radius, mass, 0);
 
@@ -20,7 +18,8 @@ Star::Star()
 
 Star::Star(double radius, double mass, double orbitalRadius)
 {
-
+    luminosity = calcLuminosity(mass);
+    temperature = pow((luminosity / pow((radius / solarRadiusInKM), 2.0)), 0.25) * 5777;
 }
 
 double Star::getSolarMass()
