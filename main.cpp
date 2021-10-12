@@ -1,6 +1,6 @@
+#include "starsystem.h"
 #include <SDL2/SDL.h>
 #include <iostream>
-#include "starsystem.h"
 
 #define DEBUG true
 
@@ -10,11 +10,10 @@ int main(int argc, char *argv[])
         SDL_Renderer *renderer = nullptr;
         SDL_Event event;
 
-        if (DEBUG)
-        {
-            std::cout << "Debug mode on!\n";
-            StarSystem system = StarSystem();
-            std::cout << system.toString();
+        if (DEBUG) {
+                std::cout << "Debug mode on!\n";
+                StarSystem system = StarSystem();
+                std::cout << system.toString();
         }
 
         if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
