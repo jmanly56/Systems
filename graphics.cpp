@@ -19,7 +19,8 @@ int Graphics::init()
                 return -1;
         }
 
-        window = SDL_CreateWindow("Systems", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, NULL);
+        window = SDL_CreateWindow("Systems", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280,
+                                  720, NULL);
 
         if (!window) {
                 printf("Failed to create window.\n");
@@ -30,4 +31,15 @@ int Graphics::init()
 
         renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
         return 0;
+}
+
+void Graphics::render()
+{
+        SDL_SetRenderDrawColor(renderer, 3, 4, 23, 255);
+        SDL_RenderClear(renderer);
+
+        for (auto drawable : drawables) {
+                drawable->draw();
+        }
+        SDL_RenderPresent(renderer);
 }

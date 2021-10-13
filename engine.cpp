@@ -15,5 +15,6 @@ void Engine::run()
         int input_code = 0;
         while (input_code != SDL_QUIT) {
                 input_code = input->handleInputs();
+                graphics->render();
         }
 }
