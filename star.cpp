@@ -23,12 +23,7 @@ Star::Star(double radius, double mass, double orbitalRadius)
         innerLimit = 0.1 * getSolarMass() * AU_IN_KM;
         stellarAge = std::fmod(rand(), (10000000000 * pow((getSolarMass() / 1), (-2.5))));
         snowLine = 2.7 * pow(luminosity, 0.5);
-
-        if (orbitalRadius <= 0) {
-                setOrbitalRadius(radius);
-        } else {
-                this->orbitalRadius = orbitalRadius;
-        }
+        setOrbitalRadius(orbitalRadius);
 }
 
 double Star::getSolarMass() const
