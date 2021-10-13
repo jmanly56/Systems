@@ -112,7 +112,7 @@ double Star::calcRadius(double mass)
                 return (0.715219 * mass + 0.219777) * SOLAR_RADIUS_IN_KM;
         } else if (mass < 3) {
                 return (0.672937 * mass + 0.297013) * SOLAR_RADIUS_IN_KM;
-        } else if (mass >= 3) {
+        } else {
                 return (0.420598 * mass + 0.80637) * SOLAR_RADIUS_IN_KM;
         }
 }

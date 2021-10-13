@@ -11,7 +11,9 @@ IF (WIN32)
 add_executable(Systems WIN32 main.cpp starsystem.h starsystem.cpp star.h star.cpp)
 
 target_include_directories(Systems PRIVATE "C:/sdl/include")
-
+set_target_properties(Systems PROPERTIES
+LINK_FLAGS /SUBSYSTEM:CONSOLE
+)
 target_link_directories(Systems PRIVATE "C:/sdl")
 
 

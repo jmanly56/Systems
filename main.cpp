@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
                 std::cout << "Debug mode on!\n";
                 StarSystem system = StarSystem();
                 std::cout << system.toString();
+                std::cout << system.getSystemOuterLimitAU() << "AU\n";
         }
 
         if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
