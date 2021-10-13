@@ -31,12 +31,12 @@ Star::Star(double radius, double mass, double orbitalRadius)
         }
 }
 
-double Star::getSolarMass()
+double Star::getSolarMass() const
 {
         return (mass / SOLAR_MASS_IN_KG);
 }
 
-SDL_Color Star::getTemperatureColor()
+SDL_Color Star::getTemperatureColor() const
 {
         SDL_Color color;
         int temp = static_cast<int>(temperature) / 100;
@@ -97,7 +97,7 @@ SDL_Color Star::getTemperatureColor()
         return color;
 }
 
-double Star::calcLuminosity(double mass)
+double Star::calcLuminosity(double mass) const
 {
         if (mass < 0.43) {
                 return 0.23 * pow(mass, 2.3);
@@ -112,7 +112,7 @@ double Star::calcLuminosity(double mass)
 }
 
 // Calculate the radius of the star, output in KM.
-double Star::calcRadius(double mass)
+double Star::calcRadius(double mass) const
 {
         if (mass < 0.5) {
                 return (0.715219 * mass + 0.219777) * SOLAR_RADIUS_IN_KM;
@@ -122,7 +122,6 @@ double Star::calcRadius(double mass)
                 return (0.420598 * mass + 0.80637) * SOLAR_RADIUS_IN_KM;
         }
 }
-
 void Star::setOrbitalRadius(double radius)
 {
         orbitalRadius = radius;
@@ -132,12 +131,12 @@ void Star::setOrbitalRadius(double radius)
         }
 }
 
-double Star::getOrbitalRadiusAU()
+double Star::getOrbitalRadiusAU() const
 {
         return orbitalRadius / AU_IN_KM;
 }
 
-std::string Star::toString()
+std::string Star::toString() const
 {
         std::string tempString = "Star\n";
         tempString += "Mass: " + std::to_string(mass) + "\n";
@@ -151,37 +150,37 @@ std::string Star::toString()
         return tempString;
 }
 
-double Star::getTemperature()
+double Star::getTemperature() const
 {
         return temperature;
 }
 
-double Star::getLuminosity()
+double Star::getLuminosity() const
 {
         return luminosity;
 }
 
-double Star::getSolarRadius()
+double Star::getSolarRadius() const
 {
         return radius / SOLAR_RADIUS_IN_KM;
 }
 
-double Star::getInnerLimitAU()
+double Star::getInnerLimitAU() const
 {
         return innerLimit / AU_IN_KM;
 }
 
-double Star::getOuterLimitAU()
+double Star::getOuterLimitAU() const
 {
         return outerLimit / AU_IN_KM;
 }
 
-double Star::getStellarAge()
+double Star::getStellarAge() const
 {
         return stellarAge;
 }
 
-double Star::getSnowLineAU()
+double Star::getSnowLineAU() const
 {
         return snowLine;
 }
