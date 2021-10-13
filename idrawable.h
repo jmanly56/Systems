@@ -1,6 +1,7 @@
-#ifndef DRAWABLE_H
-#define DRAWABLE_H
+#ifndef IDRAWABLE_H
+#define IDRAWABLE_H
 
+struct SDL_Renderer;
 class IDrawable
 {
     public:
@@ -8,7 +9,7 @@ class IDrawable
 
     protected:
         friend class Graphics;
-        virtual void draw() = 0;
+        virtual void draw(const SDL_Renderer &renderer) = 0;
 };
 
-#endif // DRAWABLE_H
+#endif // IDRAWABLE_H

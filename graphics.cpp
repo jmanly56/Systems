@@ -39,7 +39,7 @@ void Graphics::render()
         SDL_RenderClear(renderer);
 
         for (auto drawable : drawables) {
-                drawable->draw();
+                drawable->draw(*renderer);
         }
         SDL_RenderPresent(renderer);
 }
