@@ -26,3 +26,4 @@ add_executable(Systems main.cpp starsystem.h starsystem.cpp star.h star.cpp)
 ENDIF()
 
 target_link_libraries(Systems PRIVATE SDL2 SDL2main SDL2_image)
+add_custom_command(TARGET Systems POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/resources/ $<TARGET_FILE_DIR:Systems>/resources)
