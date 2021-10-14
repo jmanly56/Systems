@@ -33,6 +33,17 @@ int Graphics::init()
         return 0;
 }
 
+void Graphics::registerDrawable(IDrawable *drawable)
+{
+        drawable->index = drawables.size();
+        drawables.push_back(drawable);
+}
+
+void Graphics::deregisterDrawable(IDrawable *drawable)
+{
+        drawables.erase(drawables.begin() + drawable->index);
+}
+
 void Graphics::render()
 {
         SDL_SetRenderDrawColor(renderer, 3, 4, 23, 255);
@@ -42,4 +53,11 @@ void Graphics::render()
                 drawable->draw(*renderer);
         }
         SDL_RenderPresent(renderer);
+}
+
+SDL_Texture *Graphics::loadTexture(const char *filename)
+{
+        SDL_Texture *texture = nullptr;
+        texture = IMG_LoadTexture(renderer, filename);
+        return texture;
 }

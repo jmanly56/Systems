@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
                 std::cout << system.toString();
                 std::cout << system.getSystemOuterLimitAU() << "AU\n";
         }
+        e.init();
         e.run();
         return 0;
 }

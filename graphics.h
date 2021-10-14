@@ -3,7 +3,9 @@
 
 #include "idrawable.h"
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <memory>
+#include <string>
 #include <vector>
 
 class Graphics
@@ -12,10 +14,13 @@ class Graphics
         Graphics();
         ~Graphics();
         int init();
+        void registerDrawable(IDrawable* drawable);
+        void deregisterDrawable(IDrawable* drawable);
         void render();
+        SDL_Texture *loadTexture(const char *filename);
 
     private:
-        std::vector<std::shared_ptr<IDrawable>> drawables;
+        std::vector<IDrawable*> drawables;
         SDL_Window *window;
         SDL_Renderer *renderer;
 };

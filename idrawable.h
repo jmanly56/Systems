@@ -9,7 +9,8 @@ class IDrawable
 
     protected:
         friend class Graphics;
-        virtual void draw(const SDL_Renderer &renderer) = 0;
+        int index = 0;
+        virtual void draw(SDL_Renderer &renderer) = 0;
 };
 
 #endif // IDRAWABLE_H

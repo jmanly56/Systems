@@ -4,10 +4,28 @@
 
 Engine::Engine()
 {
-        graphics = std::make_shared<Graphics>();
-        input = std::make_shared<Input>();
+        graphics = nullptr;
+        input = nullptr;
+}
 
-        graphics->init();
+Engine::~Engine()
+{
+        delete graphics;
+        delete input;
+        gameObjects.clear();
+        delete player;
+}
+
+int Engine::init()
+{
+        graphics = new Graphics();
+        input = new Input();
+
+        if (graphics->init() < 0)
+                return -1;
+
+        loadPlayer();
+        return 0;
 }
 
 void Engine::run()
@@ -17,4 +35,11 @@ void Engine::run()
                 input_code = input->handleInputs();
                 graphics->render();
         }
+}
+
+void Engine::loadPlayer()
+{
+        player = new Player();
+        player->setTexture(graphics->loadTexture(PLAYER_TEXTURE_PATH));
+        graphics->registerDrawable(dynamic_cast<IDrawable*>(player));
 }
