@@ -1,6 +1,7 @@
 #include "engine.h"
 #include "graphics.h"
 #include "input.h"
+#include "util.h"
 
 Engine::Engine()
 {
@@ -32,6 +33,7 @@ void Engine::run()
 {
         int input_code = 0;
         while (input_code != SDL_QUIT) {
+                updateFrametime();
                 input_code = input->handleInputs();
                 graphics->render();
         }
@@ -41,5 +43,5 @@ void Engine::loadPlayer()
 {
         player = new Player();
         player->setTexture(graphics->loadTexture(PLAYER_TEXTURE_PATH));
-        graphics->registerDrawable(dynamic_cast<IDrawable*>(player));
+        graphics->registerDrawable(dynamic_cast<IDrawable *>(player));
 }
