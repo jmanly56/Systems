@@ -6,6 +6,15 @@ enum Direction {
     CCW
 };
 
+enum Action {
+        None,
+        Accelerate,
+        Decelerate,
+        TurnRight,
+        TurnLeft,
+        Stop,
+};
+
 struct Position {
         float x;
         float y;

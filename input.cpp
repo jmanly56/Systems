@@ -6,7 +6,6 @@ int Input::handleInputs()
                 switch (event.type) {
                 case SDL_QUIT:
                         return SDL_QUIT;
-
                 default:
                         break;
                 }

@@ -12,6 +12,7 @@ class Input
 
     private:
         SDL_Event event;
+
 };
 
 #endif // INPUT_H
