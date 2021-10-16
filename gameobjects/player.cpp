@@ -51,8 +51,10 @@ void Player::turn(Direction d)
 {
         switch (d) {
         case CW:
+                heading = heading + (-turn_rate * frametime);
                 break;
         case CCW:
+                heading = heading + (turn_rate * frametime);
                 break;
         default:
                 break;
@@ -66,6 +68,6 @@ void Player::stop(float external)
         } else if (speed > 0) {
                 speed = speed + ((-acceleration_rate + external) * frametime);
         } else {
-                speed = 0;
+                return;
         }
 }
