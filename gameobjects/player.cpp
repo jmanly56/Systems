@@ -7,6 +7,10 @@
 Player::Player()
 {
         texture = nullptr;
+        heading = 0;
+        turn_rate = 0;
+        acceleration_rate = 0;
+        speed = 0;
 }
 
 Player::~Player()
@@ -30,7 +34,7 @@ void Player::draw(SDL_Renderer &renderer)
         dest.y = 100;
 
         SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
-        SDL_RenderCopy(&renderer, texture, NULL, &dest);
+        SDL_RenderCopyEx(&renderer, texture, NULL, &dest, heading, NULL, SDL_FLIP_NONE);
 }
 
 void Player::updatePosition()

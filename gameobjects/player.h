@@ -19,8 +19,8 @@ class Player : protected GameObject, public IDrawable
         void stop(float external = 0.0);
 
     private:
-        float heading;
-        float turn_rate;
+        double heading;
+        double turn_rate;
         float acceleration_rate;
         float speed;
         SDL_Texture *texture;
