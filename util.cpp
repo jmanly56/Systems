@@ -11,6 +11,11 @@ float displacement(float v, float a, float d_t)
         return (v * d_t) + ((0.5) * pow(d_t, 2.0) * a);
 }
 
+float adjust_velocity(float v, float a, float d_t)
+{
+        return v + (a * d_t);
+}
+
 void updateFrametime()
 {
         auto curTime = frame_clock.now();

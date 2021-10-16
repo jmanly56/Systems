@@ -30,3 +30,19 @@ void Player::draw(SDL_Renderer &renderer)
         SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
         SDL_RenderCopy(&renderer, texture, NULL, &dest);
 }
+
+void Player::updatePosition()
+{
+}
+
+void Player::accelerate(float external)
+{
+}
+
+void Player::decelerate(float external)
+{
+}
+
+void Player::stop(float external)
+{
+}
