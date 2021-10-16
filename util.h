@@ -1,6 +1,11 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+enum Direction {
+    CW,
+    CCW
+};
+
 struct Position {
         float x;
         float y;

@@ -15,6 +15,7 @@ class Player : protected GameObject, public IDrawable
         void updatePosition();
         void accelerate(float external = 0.0);
         void decelerate(float external = 0.0);
+        void turn(Direction d);
         void stop(float external = 0.0);
 
     private:

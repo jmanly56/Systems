@@ -47,6 +47,18 @@ void Player::decelerate(float external)
         speed = speed + ((-acceleration_rate + external) * frametime);
 }
 
+void Player::turn(Direction d)
+{
+        switch (d) {
+        case CW:
+                break;
+        case CCW:
+                break;
+        default:
+                break;
+        }
+}
+
 void Player::stop(float external)
 {
         if (speed < 0) {
