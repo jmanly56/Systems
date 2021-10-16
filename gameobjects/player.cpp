@@ -1,6 +1,8 @@
 #include "player.h"
+#include "../util.h"
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <cmath>
 
 Player::Player()
 {
