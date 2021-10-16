@@ -39,12 +39,21 @@ void Player::updatePosition()
 
 void Player::accelerate(float external)
 {
+        speed = speed + ((acceleration_rate + external) * frametime);
 }
 
 void Player::decelerate(float external)
 {
+        speed = speed + ((-acceleration_rate + external) * frametime);
 }
 
 void Player::stop(float external)
 {
+        if (speed < 0) {
+                speed = speed + ((acceleration_rate + external) * frametime);
+        } else if (speed > 0) {
+                speed = speed + ((-acceleration_rate + external) * frametime);
+        } else {
+                speed = 0;
+        }
 }

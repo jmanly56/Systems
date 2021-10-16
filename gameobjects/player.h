@@ -18,11 +18,10 @@ class Player : protected GameObject, public IDrawable
         void stop(float external = 0.0);
 
     private:
-        float v_x;
-        float v_y;
-        float a_x;
-        float a_y;
-        float angle;
+        float heading;
+        float turn_rate;
+        float acceleration_rate;
+        float speed;
         SDL_Texture *texture;
 };
 

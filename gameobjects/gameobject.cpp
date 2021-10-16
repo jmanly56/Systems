@@ -2,7 +2,7 @@
 
 GameObject::GameObject(float x, float y, std::string name)
 {
-        this->x = x;
-        this->y = y;
+        pos.x = x;
+        pos.y = y;
         this->name = name;
 }
