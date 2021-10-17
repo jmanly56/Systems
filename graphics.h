@@ -18,11 +18,14 @@ class Graphics
         void deregisterDrawable(IDrawable* drawable);
         void render();
         SDL_Texture *loadTexture(const char *filename);
+        void getWindowSize(int *w, int *h);
 
     private:
         std::vector<IDrawable*> drawables;
         SDL_Window *window;
         SDL_Renderer *renderer;
+        int window_h;
+        int window_w;
 };
 
 #endif // GRAPHICS_H

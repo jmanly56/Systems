@@ -4,6 +4,8 @@ Graphics::Graphics()
 {
         window = nullptr;
         renderer = nullptr;
+        window_h = 720;
+        window_w = 1280;
 }
 
 Graphics::~Graphics()
@@ -19,8 +21,8 @@ int Graphics::init()
                 return -1;
         }
 
-        window = SDL_CreateWindow("Systems", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280,
-                                  720, NULL);
+        window = SDL_CreateWindow("Systems", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window_w,
+                                  window_h, NULL);
 
         if (!window) {
                 printf("Failed to create window.\n");
@@ -69,4 +71,12 @@ SDL_Texture *Graphics::loadTexture(const char *filename)
         SDL_Texture *texture = nullptr;
         texture = IMG_LoadTexture(renderer, filename);
         return texture;
+}
+
+void Graphics::getWindowSize(int *w, int *h)
+{
+        if (w != nullptr)
+                *w = window_w;
+        if (h != nullptr)
+                *h = window_h;
 }

@@ -52,6 +52,12 @@ void Engine::loadPlayer()
         player = new Player();
         player->setTexture(graphics->loadTexture(PLAYER_TEXTURE_PATH));
         graphics->registerDrawable(dynamic_cast<IDrawable *>(player));
+        int w = 0;
+        int h = 0;
+
+        graphics->getWindowSize(&w, &h);
+
+        player->setPosition(w / 2.0, h / 2.0);
 }
 
 void Engine::handleEventQueue()
