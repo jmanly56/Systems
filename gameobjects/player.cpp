@@ -73,8 +73,10 @@ void Player::stop(float external)
 {
         if (speed < 0) {
                 speed = speed + ((acceleration_rate + external) * frametime);
+                speed = speed > 0 ? 0 : speed;
         } else if (speed > 0) {
                 speed = speed + ((-acceleration_rate + external) * frametime);
+                speed = speed < 0 ? 0 : speed;
         } else {
                 return;
         }

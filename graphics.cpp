@@ -52,6 +52,15 @@ void Graphics::render()
         for (auto drawable : drawables) {
                 drawable->draw(*renderer);
         }
+        SDL_Rect rect;
+
+        rect.x = 1280 / 2;
+        rect.y = 720 / 2;
+        rect.w = 40;
+        rect.h = 40;
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_RenderFillRect(renderer, &rect);
+        SDL_RenderDrawRect(renderer, &rect);
         SDL_RenderPresent(renderer);
 }
 
