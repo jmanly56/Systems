@@ -8,7 +8,7 @@ Player::Player()
 {
         texture = nullptr;
         heading = 0;
-        turn_rate = 0;
+        turn_rate = 1000;
         acceleration_rate = 0;
         speed = 0;
 }
@@ -55,10 +55,10 @@ void Player::turn(Direction d)
 {
         switch (d) {
         case CW:
-                heading = heading + (-turn_rate * frametime);
+                heading = heading + (+turn_rate * frametime);
                 break;
         case CCW:
-                heading = heading + (turn_rate * frametime);
+                heading = heading + (-turn_rate * frametime);
                 break;
         default:
                 break;

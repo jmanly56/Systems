@@ -15,6 +15,11 @@ enum Action {
         Stop,
 };
 
+enum EventQueueStatus {
+        Empty,
+        EventsPending,
+};
+
 struct Position {
         float x;
         float y;

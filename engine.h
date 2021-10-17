@@ -23,6 +23,8 @@ class Engine
         Player* player;
 
         void loadPlayer();
+        void handleEventQueue();
+        void doAction(Action action);
     protected:
 };
 

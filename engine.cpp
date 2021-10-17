@@ -3,6 +3,8 @@
 #include "input.h"
 #include "util.h"
 
+#include <cstdint>
+
 Engine::Engine()
 {
         graphics = nullptr;
@@ -31,10 +33,12 @@ int Engine::init()
 
 void Engine::run()
 {
-        int input_code = 0;
-        while (input_code != SDL_QUIT) {
+        int event_out = 0;
+        while (event_out != SDL_QUIT) {
                 updateFrametime();
-                input_code = input->handleInputs();
+                event_out = input->handleInputs();
+                if (event_out == EventQueueStatus::EventsPending)
+                        handleEventQueue();
                 graphics->render();
         }
 }
@@ -45,3 +49,38 @@ void Engine::loadPlayer()
         player->setTexture(graphics->loadTexture(PLAYER_TEXTURE_PATH));
         graphics->registerDrawable(dynamic_cast<IDrawable *>(player));
 }
+
+void Engine::handleEventQueue()
+{
+
+        uint8_t *queue = nullptr;
+        int eventsInQueue = input->getEventQueue(&queue);
+
+        for (uint8_t i = 0; i < eventsInQueue; i++) {
+                doAction(static_cast<Action>(queue[i]));
+        }
+}
+
+void Engine::doAction(Action action)
+{
+        switch (action) {
+        case Accelerate:
+                player->accelerate();
+                break;
+        case Decelerate:
+                player->decelerate();
+                break;
+        case TurnLeft:
+                player->turn(CCW);
+                break;
+        case TurnRight:
+                player->turn(CW);
+                break;
+        case Stop:
+                player->stop();
+                break;
+        default:
+                break;
+        }
+}
+
