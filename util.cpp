@@ -1,20 +1,10 @@
 #include "util.h"
 #include <chrono>
-#include <math.h>
+#include <cmath>
 
 float frametime = 0.0;
 static std::chrono::high_resolution_clock frame_clock;
 static std::chrono::time_point<std::chrono::high_resolution_clock> prevtime = frame_clock.now();
-
-float displacement(float v, float a, float d_t)
-{
-        return (v * d_t) + ((0.5) * pow(d_t, 2.0) * a);
-}
-
-float updateVelocity(float v, float a, float d_t)
-{
-        return v + (a * d_t);
-}
 
 void updateFrametime()
 {

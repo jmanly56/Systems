@@ -9,8 +9,10 @@ Player::Player()
         texture = nullptr;
         heading = 0;
         turn_rate = 1000;
-        acceleration_rate = 0;
+        acceleration_rate = 2000;
         speed = 0;
+        pos.x = 100;
+        pos.y = 100;
 }
 
 Player::~Player()
@@ -30,15 +32,17 @@ void Player::setTexture(SDL_Texture *texture)
 void Player::draw(SDL_Renderer &renderer)
 {
         SDL_Rect dest;
-        dest.x = 100;
-        dest.y = 100;
+        dest.x = (int) pos.x;
+        dest.y = (int) pos.y;
 
         SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
         SDL_RenderCopyEx(&renderer, texture, NULL, &dest, heading, NULL, SDL_FLIP_NONE);
 }
 
-void Player::updatePosition()
+void Player::update()
 {
+        pos.x += (speed * cos(degreesToRadians(heading))) * frametime;
+        pos.y += (speed * sin(degreesToRadians(heading))) * frametime;
 }
 
 void Player::accelerate(float external)
@@ -74,4 +78,15 @@ void Player::stop(float external)
         } else {
                 return;
         }
+}
+
+void Player::setPosition(float x, float y)
+{
+        pos.x = x;
+        pos.y = y;
+}
+
+void Player::setHeading(double heading)
+{
+        this->heading = heading;
 }

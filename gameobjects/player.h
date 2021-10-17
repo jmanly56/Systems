@@ -12,11 +12,13 @@ class Player : protected GameObject, public IDrawable
         ~Player();
         void setTexture(SDL_Texture *texture);
         void draw(SDL_Renderer &renderer);
-        void updatePosition();
+        void update();
         void accelerate(float external = 0.0);
         void decelerate(float external = 0.0);
         void turn(Direction d);
         void stop(float external = 0.0);
+        void setPosition(float x, float y);
+        void setHeading(double heading);
 
     private:
         double heading;

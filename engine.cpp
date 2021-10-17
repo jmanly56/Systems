@@ -39,6 +39,10 @@ void Engine::run()
                 event_out = input->handleInputs();
                 if (event_out == EventQueueStatus::EventsPending)
                         handleEventQueue();
+                for (auto go : gameObjects) {
+                        go->update();
+                }
+                player->update();
                 graphics->render();
         }
 }

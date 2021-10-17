@@ -1,6 +1,8 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+#define PI 3.14159
+
 enum Direction {
     CW,
     CCW
@@ -27,9 +29,10 @@ struct Position {
 
 extern float frametime;
 
-float displacement(float v, float a, float d_t);
-
-float updateVelocity(float v, float a, float d_t);
+inline double degreesToRadians(double degrees)
+{
+        return (degrees * PI) / 180;
+}
 
 void updateFrametime();
 #endif // UTIL_H
