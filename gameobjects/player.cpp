@@ -41,8 +41,8 @@ void Player::draw(SDL_Renderer &renderer)
 
 void Player::update()
 {
-        pos.x += (speed * cos(degreesToRadians(heading))) * frametime;
-        pos.y += (speed * sin(degreesToRadians(heading))) * frametime;
+        pos.x += (speed * sin(degreesToRadians(heading))) * frametime;
+        pos.y += (speed * -cos(degreesToRadians(heading))) * frametime;
 }
 
 void Player::accelerate(float external)
