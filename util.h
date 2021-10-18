@@ -3,10 +3,7 @@
 
 #define PI 3.14159
 
-enum Direction {
-    CW,
-    CCW
-};
+enum Direction { CW, CCW };
 
 enum Action {
         None,

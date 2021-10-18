@@ -1,7 +1,7 @@
 #ifndef IDRAWABLE_H
 #define IDRAWABLE_H
+#include <SDL2/SDL.h>
 
-struct SDL_Renderer;
 class IDrawable
 {
     public:
@@ -10,7 +10,7 @@ class IDrawable
     protected:
         friend class Graphics;
         int index = 0;
-        virtual void draw(SDL_Renderer &renderer) = 0;
+        virtual void draw(SDL_Renderer &renderer, SDL_Rect *src = NULL) = 0;
 };
 
 #endif // IDRAWABLE_H

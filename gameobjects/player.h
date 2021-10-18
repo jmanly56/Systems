@@ -11,7 +11,7 @@ class Player : protected GameObject, public IDrawable
         Player();
         ~Player();
         void setTexture(SDL_Texture *texture);
-        void draw(SDL_Renderer &renderer);
+        void draw(SDL_Renderer &renderer, SDL_Rect *src = NULL);
         void update();
         void accelerate(float external = 0.0);
         void decelerate(float external = 0.0);
@@ -26,6 +26,8 @@ class Player : protected GameObject, public IDrawable
         float acceleration_rate;
         float speed;
         SDL_Texture *texture;
+        int texture_w;
+        int texture_h;
 };
 
 #endif // PLAYER_H
