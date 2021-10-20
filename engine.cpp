@@ -1,4 +1,5 @@
 #include "engine.h"
+#include "camera.h"
 #include "graphics.h"
 #include "input.h"
 #include "util.h"
@@ -9,6 +10,8 @@ Engine::Engine()
 {
         graphics = nullptr;
         input = nullptr;
+        camera = nullptr;
+        player = nullptr;
 }
 
 Engine::~Engine()
@@ -17,6 +20,7 @@ Engine::~Engine()
         delete input;
         gameObjects.clear();
         delete player;
+        delete camera;
 }
 
 int Engine::init()
@@ -28,12 +32,16 @@ int Engine::init()
                 return -1;
 
         loadPlayer();
+        createCamera();
+        graphics->loadTestSquare();
+
         return 0;
 }
 
 void Engine::run()
 {
         int event_out = 0;
+        Position p;
         while (event_out != SDL_QUIT) {
                 updateFrametime();
                 event_out = input->handleInputs();
@@ -43,6 +51,8 @@ void Engine::run()
                         go->update();
                 }
                 player->update();
+                p = player->getPosition();
+                camera->updateCamera(p.x, p.y);
                 graphics->render();
         }
 }
@@ -58,6 +68,19 @@ void Engine::loadPlayer()
         graphics->getWindowSize(&w, &h);
 
         player->setPosition(w / 2.0, h / 2.0);
+}
+
+void Engine::createCamera()
+{
+        camera = new Camera();
+        int w = 0;
+        int h = 0;
+
+        graphics->getWindowSize(&w, &h);
+        camera->setCameraSize(w, h);
+        player->getTextureSize(&w, &h);
+        camera->setTargetSize(w, h);
+        graphics->setCamera(&camera);
 }
 
 void Engine::handleEventQueue()
@@ -93,4 +116,3 @@ void Engine::doAction(Action action)
                 break;
         }
 }
-

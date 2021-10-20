@@ -1,14 +1,18 @@
 #include "graphics.h"
+#include "gameobjects/player.h"
 
 Graphics::Graphics()
 {
         window = nullptr;
         renderer = nullptr;
         background = nullptr;
+        camera = nullptr;
+
         window_h = 720;
         window_w = 1280;
         bg_h = 0;
         bg_w = 0;
+        drawableCounter = 0;
 }
 
 Graphics::~Graphics()
@@ -40,31 +44,34 @@ int Graphics::init()
         background = loadTexture("./resources/background.png");
 
         SDL_QueryTexture(background, NULL, NULL, &bg_w, &bg_h);
+
         return 0;
 }
 
 void Graphics::registerDrawable(IDrawable *drawable)
 {
-        drawable->index = drawables.size();
+        drawable->id = drawableCounter++;
         drawables.push_back(drawable);
 }
 
 void Graphics::deregisterDrawable(IDrawable *drawable)
 {
-        drawables.erase(drawables.begin() + drawable->index);
+        drawables.erase(drawables.begin() + drawable->id);
 }
 
 void Graphics::render()
 {
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
+
         renderBackground();
 
-        for (auto drawable : drawables) {
-                drawable->draw(*renderer);
+        for (size_t i = 1; i < drawables.size(); i++) {
+                drawables[i]->draw(*renderer, &camera->rect);
         }
 
-        renderTestSquare();
+        drawables[0]->draw(*renderer, &camera->rect);
+
         SDL_RenderPresent(renderer);
 }
 
@@ -88,20 +95,19 @@ void Graphics::getWindowSize(int *w, int *h)
                 *h = window_h;
 }
 
-void Graphics::renderTestSquare()
+void Graphics::setCamera(Camera **camera)
 {
-        SDL_Rect rect;
+        this->camera = *camera;
+}
 
-        rect.x = 1280 / 2;
-        rect.y = 720 / 2;
-        rect.w = 40;
-        rect.h = 40;
-        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        SDL_RenderFillRect(renderer, &rect);
-        SDL_RenderDrawRect(renderer, &rect);
+void Graphics::loadTestSquare()
+{
+        e.texture = loadTexture("./resources/test.png");
+        registerDrawable(&e);
 }
 
 void Graphics::renderBackground()
 {
-        SDL_RenderCopyEx(renderer, background, NULL, NULL, 0, NULL, SDL_FLIP_NONE);
+        SDL_Rect dest = {0, 0, camera->rect.w, camera->rect.h};
+        SDL_RenderCopyEx(renderer, background, &camera->rect, &dest, 0, NULL, SDL_FLIP_NONE);
 }

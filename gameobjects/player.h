@@ -19,6 +19,8 @@ class Player : protected GameObject, public IDrawable
         void stop(float external = 0.0);
         void setPosition(float x, float y);
         void setHeading(double heading);
+        void getTextureSize(int *w, int *h);
+        Position getPosition() const;
 
     private:
         double heading;

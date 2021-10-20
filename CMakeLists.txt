@@ -8,7 +8,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 IF (WIN32)
-add_executable(Systems WIN32 main.cpp starsystem.h starsystem.cpp star.h star.cpp "idrawable.h" "graphics.h" "graphics.cpp" "engine.h" "engine.cpp" "input.h" "input.cpp" "gameobjects/gameobject.h" "gameobjects/gameobject.cpp" "gameobjects/player.h" "gameobjects/player.cpp" "util.h" "util.cpp"   "keybinds.h"  "keybinds.cpp"  )
+add_executable(Systems WIN32 
+main.cpp
+starsystem.h
+starsystem.cpp
+star.h star.cpp "idrawable.h" "graphics.h" "graphics.cpp" "engine.h" "engine.cpp" "input.h" "input.cpp" "gameobjects/gameobject.h" "gameobjects/gameobject.cpp" "gameobjects/player.h" "gameobjects/player.cpp" "util.h" "util.cpp"   "keybinds.h"  "keybinds.cpp"   "camera.h" "camera.cpp" "gameobjects/entity.h" "gameobjects/entity.cpp")
 
 target_include_directories(Systems PRIVATE "C:/sdl/include")
 set_target_properties(Systems PROPERTIES

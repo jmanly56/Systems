@@ -9,7 +9,7 @@ class IDrawable
 
     protected:
         friend class Graphics;
-        int index = 0;
+        uint64_t id = 0;
         virtual void draw(SDL_Renderer &renderer, SDL_Rect *src = NULL) = 0;
 };
 

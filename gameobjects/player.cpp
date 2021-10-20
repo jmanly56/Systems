@@ -34,14 +34,9 @@ void Player::setTexture(SDL_Texture *texture)
 
 void Player::draw(SDL_Renderer &renderer, SDL_Rect *src)
 {
-        SDL_Rect dest = {(int)pos.x, (int)pos.y, texture_w, texture_h};
+        SDL_Rect dest = {(int)pos.x - (*src).x, (int)pos.y - (*src).y, texture_w, texture_h};
 
-        if (src != NULL) {
-                dest.w = src->w;
-                dest.h = src->h;
-        }
-
-        SDL_RenderCopyEx(&renderer, texture, src, &dest, heading, NULL, SDL_FLIP_NONE);
+        SDL_RenderCopyEx(&renderer, texture, NULL, &dest, heading, NULL, SDL_FLIP_NONE);
 }
 
 void Player::update()
@@ -96,4 +91,15 @@ void Player::setPosition(float x, float y)
 void Player::setHeading(double heading)
 {
         this->heading = heading;
+}
+
+void Player::getTextureSize(int *w, int *h)
+{
+        *w = texture_w;
+        *h = texture_h;
+}
+
+Position Player::getPosition() const
+{
+        return pos;
 }

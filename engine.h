@@ -6,6 +6,7 @@
 
 class Graphics;
 class Input;
+class Camera;
 
 class Engine
 {
@@ -16,15 +17,18 @@ class Engine
         void run();
 
     private:
-        const char * PLAYER_TEXTURE_PATH = "./resources/playerShip.png";
-        std::vector<GameObject *> gameObjects; 
-        Graphics* graphics;
-        Input* input;
-        Player* player;
+        const char *PLAYER_TEXTURE_PATH = "./resources/playerShip.png";
+        std::vector<GameObject *> gameObjects;
+        Graphics *graphics;
+        Input *input;
+        Camera *camera;
+        Player *player;
 
         void loadPlayer();
+        void createCamera();
         void handleEventQueue();
         void doAction(Action action);
+
     protected:
 };
 
